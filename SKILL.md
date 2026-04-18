@@ -28,8 +28,12 @@ When user provides a Douyin share link and asks to extract文案/文字/转录:
 
 3. **Read the transcript** from the generated markdown file:
    - Path: `~/.openclaw/workspace/douyin-mcp-server/output/<video_id>/transcript.md`
+   - Use `read` tool to read the full file content
+   - The transcript may be very long (thousands of words), ensure you read and return the COMPLETE content
 
 4. **Return the文案 content** to user
+   - Return the FULL transcript, not just a summary or excerpt
+   - Format with proper sections and structure for readability
 
 ## API Key
 
@@ -47,8 +51,11 @@ The transcript file contains:
 
 Return the文案 content in a clean, readable format to the user.
 
-## Notes
+## Important Notes
 
 - Extraction involves downloading the video + audio processing + AI transcription
 - This may take 30-90 seconds depending on video length
 - The tool automatically handles videos up to 1 hour by splitting into segments
+- **CRITICAL**: Always read the complete transcript file using the `read` tool
+- Long videos can have transcripts of 3000+ words - never truncate or summarize
+- The transcript file contains the full spoken content with 🎼 markers for music/sound effects
